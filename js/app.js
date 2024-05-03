@@ -21,6 +21,8 @@ class Presupuesto {
   calcularRestante() {
     const gastado = this.gastos.reduce((total, gasto) => total + Number(gasto.cantidadGasto), 0);
     this.restante = this.presupuesto - gastado;
+
+    ui.insertarGastoHTML(this.gastos);
   }
 };
 
@@ -56,6 +58,8 @@ class UI {
     // resetear el formulario
     formularioElement.reset();
 
+    ui.imprimirAlerta('Gasto agregado', true);
+
     const gasto = {
       nombreGasto,
       cantidadGasto,
@@ -79,6 +83,31 @@ class UI {
     setTimeout(() => {
       divMensaje.remove();
     }, 3000);
+  }
+
+
+  // Inserta los gastos en el HTML
+  insertarGastoHTML(gastos) {
+    gastos.forEach(gasto => {
+      const { nombreGasto, cantidadGasto, id } = gasto;
+
+      const nuevoGasto = document.createElement('li');
+      nuevoGasto.className = 'list-group-item d-flex justify-content-between align-items-center';
+      nuevoGasto.dataset.id = id;
+
+      nuevoGasto.innerHTML = `
+      ${nombreGasto} <span class="badge badge-primary badge-pill">$ ${cantidadGasto}</span>`;
+
+      const btnBorrar = document.createElement('button');
+      btnBorrar.classList.add('btn', 'btn-danger', 'borrar-gasto');
+      btnBorrar.innerHTML = 'Borrar &times;';
+      btnBorrar.onclick = () => {
+        borrarGasto(id);
+      };
+
+      nuevoGasto.appendChild(btnBorrar);
+      gastosListadoElement.appendChild(nuevoGasto);
+    });
   }
 }
 
