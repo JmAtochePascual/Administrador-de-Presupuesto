@@ -23,7 +23,12 @@ class Presupuesto {
     this.restante = this.presupuesto - gastado;
 
     ui.insertarGastoHTML(this.gastos);
-    ui.actualizarRestante(this.restante);
+    ui.actualizarRestante(this.restante, this.presupuesto);
+  }
+
+  borrarGasto(id) {
+    this.gastos = this.gastos.filter(gasto => gasto.id !== id);
+    this.calcularRestante();
   }
 };
 
@@ -105,7 +110,7 @@ class UI {
       btnBorrar.classList.add('btn', 'btn-danger', 'borrar-gasto');
       btnBorrar.innerHTML = 'Borrar &times;';
       btnBorrar.onclick = () => {
-        borrarGasto(id);
+        presupuesto.borrarGasto(id);
       };
 
       nuevoGasto.appendChild(btnBorrar);
@@ -122,11 +127,22 @@ class UI {
   }
 
   // Actualiza el restante
-  actualizarRestante(restante) {
+  actualizarRestante(restante, presupuesto) {
     document.querySelector('#restante').textContent = restante;
+    const restanteElement = document.querySelector('.restante');
+
+    if (restante < presupuesto * 0.25) {
+      restanteElement.classList.remove('alert-success', 'alert-warning');
+      restanteElement.classList.add('alert-danger');
+    } else if (restante < presupuesto * 0.50) {
+      restanteElement.classList.remove('alert-success');
+      restanteElement.classList.add('alert-warning');
+    } else {
+      restanteElement.classList.remove('alert-danger', 'alert-warning');
+      restanteElement.classList.add('alert-success');
+    }
   }
 }
-
 
 let presupuesto;
 const ui = new UI();
