@@ -23,6 +23,7 @@ class Presupuesto {
     this.restante = this.presupuesto - gastado;
 
     ui.insertarGastoHTML(this.gastos);
+    ui.actualizarRestante(this.restante);
   }
 };
 
@@ -88,6 +89,8 @@ class UI {
 
   // Inserta los gastos en el HTML
   insertarGastoHTML(gastos) {
+    this.limpiarHTML();
+
     gastos.forEach(gasto => {
       const { nombreGasto, cantidadGasto, id } = gasto;
 
@@ -108,6 +111,19 @@ class UI {
       nuevoGasto.appendChild(btnBorrar);
       gastosListadoElement.appendChild(nuevoGasto);
     });
+  }
+
+
+  // Elimina los gastos del HTML
+  limpiarHTML() {
+    while (gastosListadoElement.firstChild) {
+      gastosListadoElement.removeChild(gastosListadoElement.firstChild);
+    }
+  }
+
+  // Actualiza el restante
+  actualizarRestante(restante) {
+    document.querySelector('#restante').textContent = restante;
   }
 }
 
