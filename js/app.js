@@ -1,4 +1,4 @@
-const formularioElement = document.getElementById('#agregar-gasto');
+const formularioElement = document.querySelector('#agregar-gasto');
 const gastosListadoElement = document.querySelector('#gastos ul');
 
 
@@ -22,6 +22,20 @@ class UI {
     document.querySelector('#total').textContent = presupuesto;
     document.querySelector('#restante').textContent = restante;
   }
+
+
+  // Valida el formulario
+  validarFormulario(event) {
+    event.preventDefault();
+
+    const nombreGasto = document.querySelector('#gasto').value;
+    const cantidadGasto = Number(document.querySelector('#cantidad').value);
+
+    if ([nombreGasto, cantidadGasto].includes('')) {
+      console.log('Ambos campos son obligatorios');
+      return;
+    }
+  }
 }
 
 
@@ -31,7 +45,6 @@ const ui = new UI();
 
 // Obtiene el presupuesto del usuario
 const preguntarPresupuesto = () => {
-
   let presupuestoUsuario = Number(prompt('¿Cuál es tu presupuesto?'));
 
   while (presupuestoUsuario <= 0 || isNaN(presupuestoUsuario)) {
@@ -43,4 +56,7 @@ const preguntarPresupuesto = () => {
 };
 
 
-document.addEventListener('DOMContentLoaded', preguntarPresupuesto);
+document.addEventListener('DOMContentLoaded', () => {
+  preguntarPresupuesto();
+  formularioElement.addEventListener('submit', ui.validarFormulario);
+});
