@@ -61,6 +61,11 @@ class UI {
       return;
     }
 
+    if (Number(cantidadGasto) > presupuesto.restante) {
+      ui.imprimirAlerta('Cantidad supera el restante', false);
+      return;
+    }
+
     // resetear el formulario
     formularioElement.reset();
 
