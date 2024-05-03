@@ -29,12 +29,36 @@ class UI {
     event.preventDefault();
 
     const nombreGasto = document.querySelector('#gasto').value;
-    const cantidadGasto = Number(document.querySelector('#cantidad').value);
+    const cantidadGasto = document.querySelector('#cantidad').value;
 
     if ([nombreGasto, cantidadGasto].includes('')) {
-      console.log('Ambos campos son obligatorios');
+      ui.imprimirAlerta('Ambos campos son obligatorios');
       return;
     }
+
+    if (Number(cantidadGasto) <= 0 || isNaN(cantidadGasto)) {
+      ui.imprimirAlerta('Cantidad no válida');
+      return;
+    }
+
+    // resetear el formulario
+    formularioElement.reset();
+  }
+
+
+  // Imprime alerta en el HTML
+  imprimirAlerta(mensaje, tipo = false) {
+    const divMensaje = document.createElement('div');
+    divMensaje.textContent = mensaje;
+    divMensaje.classList.add('text-center', 'alert');
+
+    tipo ? divMensaje.classList.add('alert-success') : divMensaje.classList.add('alert-danger');
+
+    document.querySelector('.primario').insertBefore(divMensaje, formularioElement);
+
+    setTimeout(() => {
+      divMensaje.remove();
+    }, 3000);
   }
 }
 
