@@ -10,6 +10,11 @@ class Presupuesto {
     this.restante = presupuesto;
     this.gastos = [];
   }
+
+  // Nuevo gasto
+  nuevoGasto(gasto) {
+    this.gastos = [...this.gastos, gasto];
+  }
 };
 
 
@@ -43,6 +48,14 @@ class UI {
 
     // resetear el formulario
     formularioElement.reset();
+
+    const gasto = {
+      nombreGasto,
+      cantidadGasto,
+      id: Date.now()
+    };
+
+    presupuesto.nuevoGasto(gasto);
   }
 
 
