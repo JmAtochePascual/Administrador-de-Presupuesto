@@ -14,6 +14,13 @@ class Presupuesto {
   // Nuevo gasto
   nuevoGasto(gasto) {
     this.gastos = [...this.gastos, gasto];
+    this.calcularRestante();
+  }
+
+  // Calcular el restante
+  calcularRestante() {
+    const gastado = this.gastos.reduce((total, gasto) => total + Number(gasto.cantidadGasto), 0);
+    this.restante = this.presupuesto - gastado;
   }
 };
 
