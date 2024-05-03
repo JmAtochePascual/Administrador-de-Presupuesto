@@ -2,7 +2,17 @@ const formularioElement = document.getElementById('#agregar-gasto');
 const gastosListadoElement = document.querySelector('#gastos ul');
 
 
+// Clase Presupuesto
+class Presupuesto {
+  constructor(presupuesto) {
+    this.presupuesto = presupuesto;
+    this.restante = presupuesto;
+    this.gastos = [];
+  }
+};
 
+
+let presupuesto;
 
 
 
@@ -13,6 +23,8 @@ const preguntarPresupuesto = () => {
   while (presupuestoUsuario <= 0 || isNaN(presupuestoUsuario)) {
     presupuestoUsuario = Number(prompt('¿Ingrese un presupuesto Valido?'));
   };
+
+  presupuesto = new Presupuesto(presupuestoUsuario);
 };
 
 
