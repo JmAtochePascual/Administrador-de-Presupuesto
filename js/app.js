@@ -27,6 +27,9 @@ const init = (event) => {
   // Listar gastos
   listarGastos();
 
+  // Resetear formulario
+  formularioHtml.reset();
+
 };
 
 
