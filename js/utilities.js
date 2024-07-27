@@ -36,7 +36,7 @@ const mostarAlerta = (mensaje, tipo) => {
 
   // Eliminar alerta
   setTimeout(() => {
-    div.remove();
+    divMensaje.remove();
   }, 3000);
 };
 

@@ -10,16 +10,21 @@ const init = (event) => {
   event.preventDefault();
 
   // Obtener datos del formulario
-  const datos = obtenerDatos();
+  const gasto = obtenerDatos();
 
   // Verificar datos
-  const esDatosValidos = verificarDatos(datos);
+  const esDatosValidos = verificarDatos(gasto);
 
   // Si los datos no son validos mostrar alerta
   if (!esDatosValidos) {
     mostarAlerta('Datos no válidos', 'error');
     return;
   }
+
+  // Agregar gasto
+  presupuesto.agregarGasto(gasto);
+
+  console.log(presupuesto.gastos);
 };
 
 

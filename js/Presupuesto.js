@@ -14,6 +14,11 @@ class Presupuesto {
     presupuestoHtml.textContent = this.presupuesto;
     restanteHtml.textContent = this.restante;
   }
+
+  // Agregar gasto
+  agregarGasto(gasto) {
+    this.gastos = [...this.gastos, gasto];
+  }
 }
 
 export {
