@@ -1,3 +1,4 @@
+import { cantidadHtml, gastoHtml } from "./selectores.js";
 
 // Solicitar presupuesto
 const solicitarSaldoPresupuesto = () => {
@@ -11,7 +12,16 @@ const solicitarSaldoPresupuesto = () => {
   return presupuesto;
 };
 
+// Obtener datos del formulario
+const obtenerDatos = () => {
+  return {
+    gasto: gastoHtml.value,
+    cantidad: Number(cantidadHtml.value),
+  };
+};
+
 
 export {
   solicitarSaldoPresupuesto,
+  obtenerDatos
 }
