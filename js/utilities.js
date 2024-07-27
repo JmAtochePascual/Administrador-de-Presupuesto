@@ -18,6 +18,7 @@ const obtenerDatos = () => {
   return {
     gasto: gastoHtml.value,
     cantidad: Number(cantidadHtml.value),
+    id: generarId()
   };
 };
 
@@ -75,10 +76,14 @@ const limpiarHtml = () => {
   }
 };
 
+// Generar ID para gasto
+const generarId = () => Math.random().toString(36).substring(2) + Date.now().toString(36);
+
 export {
   solicitarSaldoPresupuesto,
   obtenerDatos,
   verificarDatos,
   mostarAlerta,
-  listarGastos
+  listarGastos,
+  generarId
 }
