@@ -1,7 +1,7 @@
 // Importar modulos
 import { Presupuesto } from "./Presupuesto.js";
 import { formularioHtml } from "./selectores.js";
-import { listarGastos, mostarAlerta, obtenerDatos, solicitarSaldoPresupuesto, verificarDatos } from "./utilities.js";
+import { actualizarRestanteHtml, listarGastos, mostarAlerta, obtenerDatos, solicitarSaldoPresupuesto, verificarDatos } from "./utilities.js";
 
 let presupuesto;
 

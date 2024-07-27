@@ -1,5 +1,5 @@
 import { presupuesto } from "./app.js";
-import { cantidadHtml, formularioHtml, gastoHtml, gastosHtml } from "./selectores.js";
+import { cantidadHtml, formularioHtml, gastoHtml, gastosHtml, restanteHtml } from "./selectores.js";
 
 // Solicitar presupuesto
 const solicitarSaldoPresupuesto = () => {
@@ -86,11 +86,30 @@ const limpiarHtml = () => {
 // Generar ID para gasto
 const generarId = () => Math.random().toString(36).substring(2) + Date.now().toString(36);
 
+// Actualizar contenedor de restante Html
+const actualizarRestanteHtml = () => {
+
+  const restanteElement = document.querySelector('.restante');
+
+  if (presupuesto.restante < presupuesto.presupuesto * 0.25) {
+    restanteElement.classList.remove('alert-success', 'alert-warning');
+    restanteElement.classList.add('alert-danger');
+  } else if (presupuesto.restante < presupuesto.presupuesto * 0.50) {
+    restanteElement.classList.remove('alert-success', 'alert-danger');
+    restanteElement.classList.add('alert-warning');
+  } else {
+    restanteElement.classList.remove('alert-danger', 'alert-warning');
+    restanteElement.classList.add('alert-success');
+  }
+};
+
+
 export {
   solicitarSaldoPresupuesto,
   obtenerDatos,
   verificarDatos,
   mostarAlerta,
   listarGastos,
-  generarId
+  generarId,
+  actualizarRestanteHtml
 }
