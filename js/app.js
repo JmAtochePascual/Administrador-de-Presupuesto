@@ -1,7 +1,7 @@
 // Importar modulos
 import { Presupuesto } from "./Presupuesto.js";
 import { formularioHtml } from "./selectores.js";
-import { obtenerDatos, solicitarSaldoPresupuesto, verificarDatos } from "./utilities.js";
+import { mostarAlerta, obtenerDatos, solicitarSaldoPresupuesto, verificarDatos } from "./utilities.js";
 
 let presupuesto;
 
@@ -15,8 +15,11 @@ const init = (event) => {
   // Verificar datos
   const esDatosValidos = verificarDatos(datos);
 
-  console.log(esDatosValidos);
-
+  // Si los datos no son validos mostrar alerta
+  if (!esDatosValidos) {
+    mostarAlerta('Datos no válidos', 'error');
+    return;
+  }
 };
 
 
