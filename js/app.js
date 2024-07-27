@@ -1,7 +1,7 @@
 // Importar modulos
 import { Presupuesto } from "./Presupuesto.js";
 import { formularioHtml } from "./selectores.js";
-import { obtenerDatos, solicitarSaldoPresupuesto } from "./utilities.js";
+import { obtenerDatos, solicitarSaldoPresupuesto, verificarDatos } from "./utilities.js";
 
 let presupuesto;
 
@@ -11,6 +11,12 @@ const init = (event) => {
 
   // Obtener datos del formulario
   const datos = obtenerDatos();
+
+  // Verificar datos
+  const esDatosValidos = verificarDatos(datos);
+
+  console.log(esDatosValidos);
+
 };
 
 

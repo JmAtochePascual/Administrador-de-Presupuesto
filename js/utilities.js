@@ -20,8 +20,12 @@ const obtenerDatos = () => {
   };
 };
 
+// Verificar datos
+const verificarDatos = (datos) => Object.values(datos).every((dato) => dato !== '' && !isNaN(datos.cantidad) && datos.cantidad > 0);
+
 
 export {
   solicitarSaldoPresupuesto,
-  obtenerDatos
+  obtenerDatos,
+  verificarDatos
 }
