@@ -1,7 +1,7 @@
 // Importar modulos
 import { Presupuesto } from "./Presupuesto.js";
 import { formularioHtml } from "./selectores.js";
-import { actualizarRestanteHtml, listarGastos, mostarAlerta, obtenerDatos, solicitarSaldoPresupuesto, verificarDatos } from "./utilities.js";
+import { listarGastos, mostarAlerta, obtenerDatos, solicitarSaldoPresupuesto, verificarDatos } from "./utilities.js";
 
 let presupuesto;
 
@@ -18,6 +18,12 @@ const init = (event) => {
   // Si los datos no son validos mostrar alerta
   if (!esDatosValidos) {
     mostarAlerta('Datos no válidos', 'error');
+    return;
+  }
+
+  // Validar si la cantidad del gasto es mayor al restante
+  if (gasto.cantidad > presupuesto.restante) {
+    mostarAlerta('Cantidad del gasto es mayor al restante', 'error');
     return;
   }
 
