@@ -44,6 +44,9 @@ const mostarAlerta = (mensaje, tipo) => {
 // Listar gastos
 const listarGastos = () => {
 
+  // Limpiar HTML
+  limpiarHtml();
+
   presupuesto.gastos.forEach(gastoObj => {
     const { gasto, cantidad } = gastoObj;
 
@@ -65,6 +68,12 @@ const listarGastos = () => {
   });
 };
 
+//  Limpiar HTML
+const limpiarHtml = () => {
+  while (gastosHtml.firstChild) {
+    gastosHtml.removeChild(gastosHtml.firstChild);
+  }
+};
 
 export {
   solicitarSaldoPresupuesto,
