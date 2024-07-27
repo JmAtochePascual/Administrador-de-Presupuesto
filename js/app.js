@@ -1,9 +1,14 @@
 // Importar modulos
-import { solicitarPresupuesto } from "./utilities.js";
+import { Presupuesto } from "./Presupuesto.js";
+import { solicitarSaldoPresupuesto } from "./utilities.js";
 
+let presupuesto;
 
 
 // Cargar eventos
 document.addEventListener('DOMContentLoaded', () => {
-  solicitarPresupuesto();
+  const saldo = solicitarSaldoPresupuesto();
+
+  // Crear presupuesto
+  presupuesto = new Presupuesto(saldo);
 });  
