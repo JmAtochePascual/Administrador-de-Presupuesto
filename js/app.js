@@ -11,4 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Crear presupuesto
   presupuesto = new Presupuesto(saldo);
+
+  // Mostrar presupuesto
+  presupuesto.mostrarPresupuesto();
 });  
