@@ -24,6 +24,9 @@ const init = (event) => {
   // Agregar gasto
   presupuesto.agregarGasto(gasto);
 
+  // Mostrar mensaje de gasto agregado
+  mostarAlerta('Gasto agregado', 'success');
+
   // Listar gastos
   listarGastos();
 
