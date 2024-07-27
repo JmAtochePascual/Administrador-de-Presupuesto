@@ -27,12 +27,14 @@ const init = (event) => {
   // Mostrar mensaje de gasto agregado
   mostarAlerta('Gasto agregado', 'success');
 
-  // Listar gastos
-  listarGastos();
-
   // Resetear formulario
   formularioHtml.reset();
 
+  // Listar gastos
+  listarGastos();
+
+  // Actualizar Restante
+  presupuesto.actualizarRestante(gasto);
 };
 
 

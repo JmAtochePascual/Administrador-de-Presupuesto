@@ -24,6 +24,13 @@ class Presupuesto {
   eliminarGasto(id) {
     this.gastos = this.gastos.filter(gasto => gasto.id !== id);
   }
+
+  // Actualizar restante
+  actualizarRestante(gasto) {
+    const { cantidad } = gasto;
+    this.restante -= cantidad;
+    this.mostrarPresupuesto();
+  }
 }
 
 export {
