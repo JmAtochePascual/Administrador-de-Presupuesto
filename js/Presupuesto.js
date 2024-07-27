@@ -27,8 +27,8 @@ class Presupuesto {
 
   // Actualizar restante
   actualizarRestante(gasto) {
-    const { cantidad } = gasto;
-    this.restante -= cantidad;
+    const gastado = this.gastos.reduce((total, gasto) => total + gasto.cantidad, 0);
+    this.restante = this.presupuesto - gastado;
     this.mostrarPresupuesto();
   }
 }

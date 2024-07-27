@@ -64,6 +64,7 @@ const listarGastos = () => {
     // Evento para borrar el gasto
     btnBorrar.onclick = () => {
       presupuesto.eliminarGasto(id);
+      presupuesto.actualizarRestante(gastoObj);
       listarGastos();
     };
 
