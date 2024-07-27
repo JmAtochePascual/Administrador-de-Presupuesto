@@ -1,7 +1,7 @@
 // Importar modulos
 import { Presupuesto } from "./Presupuesto.js";
 import { formularioHtml } from "./selectores.js";
-import { mostarAlerta, obtenerDatos, solicitarSaldoPresupuesto, verificarDatos } from "./utilities.js";
+import { listarGastos, mostarAlerta, obtenerDatos, solicitarSaldoPresupuesto, verificarDatos } from "./utilities.js";
 
 let presupuesto;
 
@@ -24,7 +24,9 @@ const init = (event) => {
   // Agregar gasto
   presupuesto.agregarGasto(gasto);
 
-  console.log(presupuesto.gastos);
+  // Listar gastos
+  listarGastos();
+
 };
 
 
@@ -41,4 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mostrar presupuesto
   presupuesto.mostrarPresupuesto();
-});  
+});
+
+
+export {
+  presupuesto
+}

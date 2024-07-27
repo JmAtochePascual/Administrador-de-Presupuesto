@@ -1,4 +1,5 @@
-import { cantidadHtml, formularioHtml, gastoHtml } from "./selectores.js";
+import { presupuesto } from "./app.js";
+import { cantidadHtml, formularioHtml, gastoHtml, gastosHtml } from "./selectores.js";
 
 // Solicitar presupuesto
 const solicitarSaldoPresupuesto = () => {
@@ -40,10 +41,35 @@ const mostarAlerta = (mensaje, tipo) => {
   }, 3000);
 };
 
+// Listar gastos
+const listarGastos = () => {
+
+  presupuesto.gastos.forEach(gastoObj => {
+    const { gasto, cantidad } = gastoObj;
+
+    // Crear un gastoHtml
+    const nuevoGastoHtml = document.createElement('li');
+    nuevoGastoHtml.className = 'list-group-item d-flex justify-content-between align-items-center';
+    nuevoGastoHtml.innerHTML = `${gasto} <span class="badge badge-primary badge-pill">$${cantidad}</span>`;
+
+    // Boton para borrar el gasto
+    const btnBorrar = document.createElement('button');
+    btnBorrar.classList.add('btn', 'btn-danger', 'borrar-gasto');
+    btnBorrar.innerHTML = 'Borrar &times;';
+
+    // Agregar el boton al HTML
+    nuevoGastoHtml.appendChild(btnBorrar);
+
+    // Agregar gasto al HTML
+    gastosHtml.appendChild(nuevoGastoHtml);
+  });
+};
+
 
 export {
   solicitarSaldoPresupuesto,
   obtenerDatos,
   verificarDatos,
-  mostarAlerta
+  mostarAlerta,
+  listarGastos
 }
