@@ -19,6 +19,11 @@ class Presupuesto {
   agregarGasto(gasto) {
     this.gastos = [...this.gastos, gasto];
   }
+
+  // Eliminar gasto
+  eliminarGasto(id) {
+    this.gastos = this.gastos.filter(gasto => gasto.id !== id);
+  }
 }
 
 export {

@@ -49,7 +49,7 @@ const listarGastos = () => {
   limpiarHtml();
 
   presupuesto.gastos.forEach(gastoObj => {
-    const { gasto, cantidad } = gastoObj;
+    const { gasto, cantidad, id } = gastoObj;
 
     // Crear un gastoHtml
     const nuevoGastoHtml = document.createElement('li');
@@ -60,6 +60,12 @@ const listarGastos = () => {
     const btnBorrar = document.createElement('button');
     btnBorrar.classList.add('btn', 'btn-danger', 'borrar-gasto');
     btnBorrar.innerHTML = 'Borrar &times;';
+
+    // Evento para borrar el gasto
+    btnBorrar.onclick = () => {
+      presupuesto.eliminarGasto(id);
+      listarGastos();
+    };
 
     // Agregar el boton al HTML
     nuevoGastoHtml.appendChild(btnBorrar);
